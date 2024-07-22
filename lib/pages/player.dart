@@ -38,7 +38,9 @@ class _PlayerState extends State<Player> with SingleTickerProviderStateMixin {
     );
     _animation = Tween<double>(begin: 1.0, end: 0.8).animate(
       CurvedAnimation(
-          parent: _controller, curve: Curves.fastEaseInToSlowEaseOut),
+        parent: _controller,
+        curve: Curves.easeInCubic,
+      ),
     );
     _controller.repeat(reverse: true);
     VolumeController().listener((volume) {
@@ -192,14 +194,7 @@ class _PlayerState extends State<Player> with SingleTickerProviderStateMixin {
                 child: SizedBox(
                   height: MediaQuery.of(context).size.width * 0.6,
                   width: MediaQuery.of(context).size.width * 0.6,
-                  child: CachedNetworkImage(
-                    imageUrl: currentStation.favicon,
-                    placeholder: (context, url) => Animations.loading(),
-                    errorWidget: (context, url, error) => const Icon(
-                      Icons.music_note_outlined,
-                      color: Colors.white,
-                    ),
-                  ),
+                  child: currentStation.getImageWidget(),
                 ),
               ),
               const SizedBox(height: 20),

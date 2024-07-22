@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -224,9 +223,10 @@ class _StationsListState extends State<StationsList>
                                         context,
                                         PageRouteBuilder(
                                           pageBuilder: (c, a1, a2) => Player(
-                                              radioStations![i],
-                                              previous,
-                                              next),
+                                            radioStations![i],
+                                            previous,
+                                            next,
+                                          ),
                                           transitionsBuilder:
                                               (c, anim, a2, child) =>
                                                   FadeTransition(
@@ -246,20 +246,10 @@ class _StationsListState extends State<StationsList>
                                       children: [
                                         const SizedBox(width: 10),
                                         SizedBox(
-                                          height: 30,
-                                          width: 30,
-                                          child: CachedNetworkImage(
-                                            imageUrl: radioStations![i].favicon,
-                                            placeholder: (context, url) =>
-                                                Animations.loading(),
-                                            errorWidget:
-                                                (context, url, error) =>
-                                                    const Icon(
-                                              Icons.music_note_outlined,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        ),
+                                            height: 30,
+                                            width: 30,
+                                            child:
+                                                radioStations![i].getImageWidget()),
                                         const SizedBox(width: 20),
                                         Expanded(
                                           child: Text(
@@ -302,7 +292,6 @@ class _StationsListState extends State<StationsList>
                       topRight: Radius.circular(25),
                     ),
                     color: Color(0xFFDEDEDE),
-                    //color: Colors.white
                   ),
                   child: Column(
                     children: [
