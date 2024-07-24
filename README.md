@@ -2,6 +2,10 @@
 
 A radio app built with Flutter for Android using the [api.radio-browser.info](https://api.radio-browser.info) API.
 
+## Demo
+
+[![demo](https://img.youtube.com/vi/5RYDDuUndQE/0.jpg)](https://youtube.com/shorts/5RYDDuUndQE)
+
 ## Try it out
 
 Inside the `generated` folder there's a compiled APK file that you can install on your Android device.
